@@ -35,7 +35,8 @@ img {
 a {
   text-decoration: none;
 }
-3 p {
+
+p {
   font-size: 1.6rem;
 }
 
@@ -149,6 +150,19 @@ a {
       background: $secondary-font-color;
       transition: background 0.5s;
     }
+  }
+
+  &--newsletter {
+    background-color: transparent;
+    border: none;
+    color: $main-font-color-dark;
+    cursor: pointer;
+    font-size: 1.6rem;
+    padding: 1px 0.6rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 20rem;
   }
 }
 
@@ -351,4 +365,93 @@ a {
 
 .blend {
   background: url(../img/perfect-blend.jpg) center/cover no-repeat;
+}
+
+.footer {
+  padding: 7.9rem 0;
+  background-color: #121212;
+  color: #fff;
+  text-align: center;
+  position: relative;
+
+  &__content {
+    // overflow: hidden;
+
+    h4 {
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      font-weight: 100;
+      letter-spacing: 3px;
+      margin-bottom: 3rem;
+    }
+
+    .asterisk {
+      margin: 2.4rem 0;
+    }
+
+    &__about {
+      margin-bottom: 5.4rem;
+
+      p {
+        line-height: 2;
+      }
+    }
+  }
+}
+
+.back-to-top {
+  width: 7rem;
+  height: 7rem;
+  background-color: #121212;
+  position: absolute;
+  top: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  i {
+    display: block;
+    color: #fff;
+    font-size: 2rem;
+    padding: 2rem;
+  }
+}
+
+.social-media {
+  &__icons {
+    list-style: none;
+    margin-bottom: 5.4rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+
+    i {
+      font-size: 2rem;
+      color: #fff;
+      opacity: 0.5;
+      transition: all 0.5s;
+
+      &:hover,
+      &:focus {
+        color: $secondary-font-color;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.newsletter {
+  &__form {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__input {
+    width: 100%;
+    max-width: 25rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
 }
