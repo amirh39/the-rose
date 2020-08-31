@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro:400,900&display=swap');
 
+// Mixins
+
+@mixin animation($name, $duration, $delay, $style) {
+  opacity: 0;
+  animation: $name $duration $style;
+  animation-delay: $delay;
+}
+
+// Styles
+
+$breakpoint-desktop: 900px;
+
 $main-font: 'Source Sans Pro', sans-serif;
 $secondary-font: 'Herr Von Muellerhoff', cursive;
 $body-font: 'Cabin', sans-serif;
@@ -23,8 +35,13 @@ html {
   line-height: 1.6;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 section {
   padding: 3.9rem 0;
+  overflow: hidden;
 }
 
 img {
@@ -55,6 +72,7 @@ p {
   font-weight: 900;
   letter-spacing: 0.5rem;
   margin-right: -0.5rem;
+  @include animation(scale, 0.5s, 0, forwards);
 
   &--dark {
     color: $main-font-color-dark;
@@ -97,6 +115,7 @@ p {
   font-weight: 100;
   line-height: 0.4;
   letter-spacing: 2px;
+  @include animation(fadeUp, 0.5s, 0.5s, forwards);
 
   .first-letter {
     text-transform: uppercase;
@@ -158,11 +177,38 @@ p {
     color: $main-font-color-dark;
     cursor: pointer;
     font-size: 1.6rem;
-    padding: 1px 0.6rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    margin-left: 20rem;
+    margin-left: 21.2rem;
+  }
+}
+
+.line {
+  width: 100%;
+  max-width: 8.4rem;
+  height: 0.25rem;
+  background: #fff;
+  position: relative;
+  @include animation(grow, 2s, 0.9s, forwards);
+
+  &--left::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border: 0.6rem solid transparent;
+    border-left-color: #fff;
+    @include animation(grow, 0.5s, 1.4s, forwards);
+  }
+
+  &--right::before {
+    @extend .line--left::before;
+    left: unset;
+    right: 0;
+    border-left-color: transparent;
+    border-right-color: #fff;
   }
 }
 
@@ -170,6 +216,17 @@ p {
   min-height: 65vh;
   display: flex;
   align-items: center;
+}
+
+.asterisk {
+  font-size: 1.2rem;
+  color: $secondary-font-color;
+  margin: 0 1.6rem;
+  @include animation(spin, 0.5s, 0.7s, forwards);
+}
+
+.single-animation {
+  @include animation(fadeDown, 0.5s, 1.5s, forwards);
 }
 
 .header {
@@ -296,38 +353,6 @@ p {
   justify-content: center;
 }
 
-.line {
-  width: 100%;
-  max-width: 8.4rem;
-  height: 0.25rem;
-  background: #fff;
-  position: relative;
-
-  &--left::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    border: 0.6rem solid transparent;
-    border-left-color: #fff;
-  }
-
-  &--right::before {
-    @extend .line--left::before;
-    left: unset;
-    right: 0;
-    border-left-color: transparent;
-    border-right-color: #fff;
-  }
-}
-
-.asterisk {
-  font-size: 1.2rem;
-  color: $secondary-font-color;
-  margin: 0 1.6rem;
-}
-
 .story {
   .global--headline {
     margin-top: 6.9rem;
@@ -375,7 +400,7 @@ p {
   position: relative;
 
   &__content {
-    // overflow: hidden;
+    overflow: hidden;
 
     h4 {
       font-size: 1.9rem;
@@ -414,6 +439,7 @@ p {
     color: #fff;
     font-size: 2rem;
     padding: 2rem;
+    @include animation(up, 2s, 0, infinite);
   }
 }
 
@@ -453,5 +479,204 @@ p {
     max-width: 25rem;
     padding: 1rem;
     border-radius: 0.4rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  section {
+    padding: 7.9rem;
+  }
+
+  .btn {
+    &--newsletter {
+      margin-left: 16rem;
+    }
+  }
+
+  .spacer--right {
+    padding-right: 7rem;
+  }
+
+  .active {
+    position: relative;
+
+    ::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $secondary-font-color;
+      left: 0;
+      bottom: -3px;
+    }
+  }
+
+  .nav {
+    justify-content: space-between;
+
+    &__toggle {
+      display: none;
+    }
+
+    &__list {
+      position: initial;
+      width: initial;
+      height: initial;
+      background: transparent;
+      padding: 0;
+      justify-content: initial;
+      flex-direction: row;
+      transform: initial;
+      transition: initial;
+    }
+
+    &__item {
+      margin: 0 2.4rem;
+      border: none;
+      width: initial;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__link {
+      font-size: 1.3rem;
+    }
+  }
+
+  .headline {
+    font-size: 4.7rem;
+    letter-spacing: 0.8rem;
+  }
+
+  .sub--headline {
+    font-size: 10rem;
+
+    .first-letter {
+      font-size: 12.2rem;
+    }
+  }
+
+  .line {
+    max-width: 11.4rem;
+  }
+
+  .story {
+    &__info {
+      display: flex;
+      align-items: center;
+
+      div {
+        flex: 1;
+      }
+    }
+  }
+
+  .footer {
+    &__content {
+      max-width: 77.5rem;
+      margin: auto;
+
+      &__about {
+        max-width: 50rem;
+        margin: 0 auto 5.4rem;
+      }
+
+      &__divider {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .social-media {
+    width: 100%;
+    max-width: 27.3rem;
+    margin: 0 1rem;
+
+    &__icons {
+      i {
+        opacity: 1;
+      }
+    }
+  }
+
+  .newsletter {
+    &__form {
+      @extend .social-media;
+    }
+  }
+}
+
+// Animations
+
+@keyframes fadeUp {
+  0% {
+    transform: translateY(4rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes up {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-1rem);
   }
 }
