@@ -376,4 +376,8 @@ a {
   padding-top: 3rem;
   margin-bottom: 0;
 }
+
+.blend {
+  background: url(../img/perfect-blend.jpg) center/cover no-repeat;
+}
 /*# sourceMappingURL=style.css.map */
