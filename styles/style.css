@@ -528,6 +528,7 @@ p {
   width: 100%;
   max-width: 25rem;
   padding: 1rem;
+  border: none;
   border-radius: 0.4rem;
 }
 
