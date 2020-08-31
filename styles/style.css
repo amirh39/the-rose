@@ -363,4 +363,17 @@ a {
 .recipes {
   background: url(../img/tasteful-recipes.jpg) center/cover no-repeat;
 }
+
+.image-group {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.menu .story__info__description {
+  padding-top: 3rem;
+  margin-bottom: 0;
+}
 /*# sourceMappingURL=style.css.map */
