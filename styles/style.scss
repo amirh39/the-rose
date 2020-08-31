@@ -152,6 +152,12 @@ a {
   }
 }
 
+.between {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+}
+
 .header {
   width: 100%;
   position: absolute;
@@ -324,4 +330,8 @@ a {
       margin-bottom: 2.4rem;
     }
   }
+}
+
+.recipes {
+  background: url(../img/tasteful-recipes.jpg) center/cover no-repeat;
 }

@@ -145,6 +145,16 @@ a {
   transition: background 0.5s;
 }
 
+.between {
+  min-height: 65vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .header {
   width: 100%;
   position: absolute;
@@ -348,5 +358,9 @@ a {
 
 .story__info p {
   margin-bottom: 2.4rem;
+}
+
+.recipes {
+  background: url(../img/tasteful-recipes.jpg) center/cover no-repeat;
 }
 /*# sourceMappingURL=style.css.map */
